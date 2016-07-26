@@ -9,6 +9,11 @@ Proving ground for J2EE 7 RESTful web services. Jersey will provide grunt for RE
 
 NOTE: For hot reload to work, Eclipse->Project->Build Automatically should be enabled
 
+## URLS
+
+-   <http://localhost:9998/app/hello>
+-   [Default index page](http://localhost:9998/)
+
 # Intergration Testing
  
 ## Build War for Tomcat hot deployment 
@@ -18,6 +23,11 @@ NOTE: For hot reload to work, Eclipse->Project->Build Automatically should be en
 ## Deploy
 
  TODO for now manual copy into webapps folder of running tomcat instance
+
+## URLS
+
+-   <http://localhost:8080/RESTful/app/hello>
+-   [Default index page](http://localhost:8080/RESTful/)
 
 # Resources
 

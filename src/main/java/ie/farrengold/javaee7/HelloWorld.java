@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ie.farrengold.javaee7;
 
 import javax.ws.rs.GET;
@@ -11,7 +8,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
 /**
- * @author Brian
+ * @author Brian Dinneen
+ * @since July 2016
  *
  */
 @Path("hello")
