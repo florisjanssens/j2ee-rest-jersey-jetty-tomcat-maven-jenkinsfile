@@ -63,6 +63,14 @@ NOTE: For hot reload to work, Eclipse->Project->Build Automatically should be en
 
 ## Jenkins
 
+-   <https://wiki.jenkins-ci.org/display/JENKINS/Starting+and+Accessing+Jenkins>
 -   <https://jenkins.io/doc/pipeline>
 -   <https://jenkins.io/doc/pipeline/jenkinsfile>
 -   <https://jenkins.io/doc/pipeline/steps>
+-   [Pipeline Syntax Snippet Generator](http://localhost:9090/pipeline-syntax)
+
+## Jenkins - Tools
+
+-   <https://git-scm.com/downloads>
+-   Maven
+
