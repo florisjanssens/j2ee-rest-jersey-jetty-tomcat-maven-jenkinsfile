@@ -20,6 +20,7 @@ public class HelloWorld {
 
 	/** Creates a new instance of HelloWorld */
 	public HelloWorld() {
+		// SonarQube Code Smell. blank constructor seems to be required
 	}
 
 	/**
