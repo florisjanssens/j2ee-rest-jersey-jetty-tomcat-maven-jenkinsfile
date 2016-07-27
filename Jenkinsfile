@@ -18,5 +18,12 @@ node {
    
       // Mark the code build 'stage'....
    stage 'Archive'
-   archive 'target/*.war'
+   stash includes: 'target/*.war', name: 'RESTful.war'
+ 
+   stage 'Release To Manual Test'
+   input 'Deploy to local Tomcat?'
+
+   stage 'Deploy To Manual Test'
+   unstash 'RESTful.war'
+   bat 'copy target\\*.war F:\\Apps\\Tomcat\\apache-tomcat-8.5.4\\webapps'
 }
