@@ -14,5 +14,9 @@ node {
    stage 'Build'
    // Run the maven build
    bat "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package"
-   step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+   //step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+   
+      // Mark the code build 'stage'....
+   stage 'Archive'
+   archive 'target/*.war'
 }
