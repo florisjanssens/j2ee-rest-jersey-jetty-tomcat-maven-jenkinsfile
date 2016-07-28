@@ -20,7 +20,6 @@ public class HelloWorld {
 
 	/** Creates a new instance of HelloWorld */
 	public HelloWorld() {
-		// SonarQube Code Smell. blank constructor seems to be required
 	}
 
 	/**
@@ -31,7 +30,7 @@ public class HelloWorld {
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String getHtml() {
-		return "<html lang=\"en\"><body><h1>Hello, World!!</h1><h2>David in the house</h2></body></html>";
+		return "<html lang=\"en\"><body><h1>Hello, World!!</h1></body></html>";
 	}
 
 	@GET

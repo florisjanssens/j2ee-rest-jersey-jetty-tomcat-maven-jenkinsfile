@@ -32,4 +32,7 @@ node {
 
 	stage 'Release To Production'
 	input 'Free the bird?'
+
+	stage 'Demo in London'
+	input 'What to say about this?'
 }
