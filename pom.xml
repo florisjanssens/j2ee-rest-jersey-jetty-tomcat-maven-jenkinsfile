@@ -39,10 +39,27 @@
 			<artifactId>jersey-container-servlet</artifactId>
 			<version>2.23.1</version>
 		</dependency>
+		<!-- <dependency> <groupId>org.glassfish.jersey.test-framework.providers</groupId> 
+			<artifactId>jersey-test-framework-provider-bundle</artifactId> <version>2.23.1</version> 
+			<scope>test</scope> </dependency> - - >
+		<dependency>
+			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+			<artifactId>jersey-test-framework-provider-bundle</artifactId>
+			<version>2.23.1</version>
+			<scope>test</scope>
+		</dependency>
+-->
+
+<dependency>
+    <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+    <artifactId>jersey-test-framework-provider-simple</artifactId>
+    <version>2.23.1</version>
+</dependency>
 	</dependencies>
 	<build>
 		<!-- <finalName>RESTful</finalName> -->
-		<!-- <finalName>${project.artifactId}-${project.version}-${maven.build.timestamp}</finalName>  -->
+		<!-- <finalName>${project.artifactId}-${project.version}-${maven.build.timestamp}</finalName> -->
+		<!-- Append unique time stamp to war. This facilites Tomcat hot redeployment -->
 		<finalName>${project.artifactId}##${maven.build.timestamp}</finalName>
 		<pluginManagement>
 			<plugins>
@@ -52,35 +69,33 @@
 					<artifactId>jetty-maven-plugin</artifactId>
 					<version>9.4.0.M0</version>
 				</plugin>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>3.0.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.7.8-SNAPSHOT</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
-
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<configuration>
-					<!-- <httpConnector> <port>9090</port> </httpConnector> -->
 					<stopPort>9966</stopPort>
 					<stopKey>foo</stopKey>
 					<stopWait>10</stopWait>
-					<!-- Not working with 2.19.xx Jersey
-					<connectors>
-						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-							<port>${jersey.config.test.container.port}</port>
-							<maxIdleTime>60000</maxIdleTime>
-						</connector>
-					</connectors>
-					-->
-					<!--
-					https://github.com/jersey/jersey/blob/master/examples/java8-webapp/pom.xml 
-					 -->
+					<!-- https://github.com/jersey/jersey/blob/master/examples/java8-webapp/pom.xml -->
 					<systemProperties>
-                        <systemProperty>
-                            <name>jetty.port</name>
-                            <value>${jersey.config.test.container.port}</value>
-                        </systemProperty>
-                    </systemProperties>
+						<systemProperty>
+							<name>jetty.port</name>
+							<value>${jersey.config.test.container.port}</value>
+						</systemProperty>
+					</systemProperties>
 				</configuration>
 			</plugin>
 		</plugins>

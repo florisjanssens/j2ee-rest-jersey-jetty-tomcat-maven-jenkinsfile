@@ -29,4 +29,7 @@ node {
    
 	stage 'SonarQube Analysis'
 	bat "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore sonar:sonar"
+
+	stage 'Release To Production'
+	input 'Free the bird?'
 }

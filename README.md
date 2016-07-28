@@ -74,7 +74,18 @@ NOTE: For hot reload to work, Eclipse->Project->Build Automatically should be en
 -   <https://git-scm.com/downloads>
 -   Maven
 
-# Launchers
+## SonarQube
+
+-   <http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Maven>
+
+# Infrastruture 
+## URLS
+
+-   [SonarQube](http://localhost:8081)
+-   F:\Apps\SonarQube\sonarqube-5.6.1\bin\windows-x86-64\StartSonar.bat
+-   [SonarQube](http://localhost:9000)
+
+## Launchers
 
 -   F:\Apps\Nexus\NexusRunner.cmd
 -   F:\Apps\SonarQube\sonarqube-5.6.1\bin\windows-x86-64\StartSonar.bat
