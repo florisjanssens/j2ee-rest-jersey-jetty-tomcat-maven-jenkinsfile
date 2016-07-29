@@ -84,18 +84,18 @@ Once everything is configured, build and deploy war files to tomcat via your jen
 
 And Jenkins jobs on:
 
--   http://localhost:9090/job/HelloWorldJenkinsfile/workflow-stage
--   http://localhost:9090/job/HelloWorldPipeline/workflow-stage
+-   <http://localhost:9090/job/HelloWorldJenkinsfile/workflow-stage>
+-   <http://localhost:9090/job/HelloWorldPipeline/workflow-stage>
 
 # Bibliography
-## REST Jersy
+## REST Jersey
 
 -   <https://www.ibm.com/developerworks/library/wa-aj-tomcat>
 -   <http://www.vogella.com/tutorials/REST/article.html>
 -   <https://jersey.java.net/documentation/latest/modules-and-dependencies.html>
 -   <https://jersey.java.net/documentation/latest/deployment.html#deployment.servlet>
 
-## REST Jersy Examples
+## REST Jersey Examples
 
 -   <https://github.com/jersey/jersey/tree/master/examples/servlet3-webapp>
 -   <https://github.com/jersey/jersey/blob/master/examples/java8-webapp>
