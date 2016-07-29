@@ -2,25 +2,28 @@
 Proving ground for J2EE 7 RESTful web services. Jersey will provide grunt for REST. Jetty local development but Tomcat for Integration testing. Maven build framework with Jenkins organising. If that is not enough then SonarQube and Jacoco for code coverage.
 
 * If you just want to play with and extend the JAX-RS REST hello world example then install [Developer Tools](#developer), download sources and go have fun
-* If you want to have fun with [Jenkins 2.x Pipeline](https://jenkins.io/doc/pipeline) then install [Deployment Pipeline)[deployment-pipeline] tools. 
+* If you want to have fun with [Jenkins 2.x Pipeline](https://jenkins.io/doc/pipeline) then install [Deployment Pipeline)[#deployment-pipeline] tools. 
 * If you want to have fun with [Jenkinsfile](https://jenkins.io/doc/pipeline/jenkinsfile) then you need:
-  * to fork this repository
+  * to fork this repository to edit your [Jenkinsfile](Jenkinsfile)
   * the Developer tools
   * the Deployment tools 
 
-This plaground was setup in **July 2016** 
+Please note this plaground was setup in **July 2016**. Please do send me fixes for my stupid errors. 
 
 # Development 
-## Compile and run on Jetty for local development
+Once you have the sources downloaded and [developer tools](#developer) setup execute the follow to compile and run on Jetty for local development
 
 	mvn clean compile jetty:run
 
-NOTE: For hot reload to work, 'Eclipse->Project->Build Automatically' should be enabled
+NOTE: For hot reload to work, _Eclipse->Project->Build Automatically_ should be enabled
 
-## URLS
+The helloworld REST service will be availabe on:
 
--   <http://localhost:9998/app/hello>
--   [Default index page](http://localhost:9998/)
+* http://localhost:9998/app/hello>
+
+and the default index.jsp will respond on:
+
+* http://localhost:9998
 
 # Intergration Testing
 ## Build War for Tomcat hot deployment 
@@ -52,6 +55,7 @@ The following tools are used in my hello world deployment pipeline:
 
 -   [JDK 8u91](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 -   [Git Client](https://git-scm.com/downloads)
+-   [Apache Maven, 3.3.9](https://maven.apache.org/download.cgi)
 -   [Apache Tomcat, 8.5.4](http://tomcat.apache.org/download-80.cgi)
 -   [Jenkins, 2.15](https://jenkins.io/)
 -   [Nexus, 3.01](http://www.sonatype.com/download-oss-sonatype)
@@ -71,7 +75,7 @@ Applications are used **as is** except for Jenkins which needs to be informed of
   ** Use **M3** as maven client name 
 * Git Client
 
-I use the following [launcher scripts](tree/master/src/site/resources) 
+I use the following [launcher scripts](src/site/resources) 
 
 -   F:\Apps\Nexus\NexusRunner.cmd
 -   F:\Apps\SonarQube\sonarqube-5.6.1\bin\windows-x86-64\StartSonar.bat
