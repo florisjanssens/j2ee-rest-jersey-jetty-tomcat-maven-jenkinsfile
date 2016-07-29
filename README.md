@@ -84,8 +84,8 @@ Once everything is configured, build and deploy war files to tomcat via your jen
 
 And Jenkins jobs on:
 
-*	http://localhost:9090/job/HelloWorldJenkinsfile/workflow-stage
-*	http://localhost:9090/job/HelloWorldPipeline/workflow-stage
+-   http://localhost:9090/job/HelloWorldJenkinsfile/workflow-stage
+-   http://localhost:9090/job/HelloWorldPipeline/workflow-stage
 
 # Bibliography
 ## REST Jersy
