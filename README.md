@@ -8,8 +8,11 @@ Proving ground for J2EE 7 RESTful web services. Jersey will provide grunt for RE
   * the Developer tools
   * the Deployment tools
 
-* Please this plaground was setup in **July 2016**
+* This plaground was setup in **July 2016**
 * Please do send me fixes for my stupid errors. 
+* I did not automate the install of [Deployment Pipeline](#deployment-pipeline) tools. Vagrant and Puppet poc work has been covered in my other projects.
+  * https://github.com/lastnitescurry/dctm-vagrant-puppet
+  * https://github.com/lastnitescurry/documentum71 
 
 # Development 
 Once you have the sources downloaded and [developer tools](#developer-tools) setup execute the follow to compile and run on Jetty for local development
