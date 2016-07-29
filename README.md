@@ -1,17 +1,17 @@
 # j2ee-rest-jersey-jetty-tomcat-maven-jenkinsfile
 Proving ground for J2EE 7 RESTful web services. Jersey will provide grunt for REST. Jetty local development but Tomcat for Integration testing. Maven build framework with Jenkins organising. If that is not enough then SonarQube and Jacoco for code coverage.
 
-* If you just want to play with and extend the JAX-RS REST hello world example then install [Developer Tools](#developer), download sources and go have fun
-* If you want to have fun with [Jenkins 2.x Pipeline](https://jenkins.io/doc/pipeline) then install [Deployment Pipeline)[#deployment-pipeline] tools. 
-* If you want to have fun with [Jenkinsfile](https://jenkins.io/doc/pipeline/jenkinsfile) then you need:
+* If you just want to play with and extend the JAX-RS REST hello world example then install [Developer Tools](#developer-tools), download sources and go have fun
+* If you want to have fun with [Jenkins 2.x Pipeline](https://jenkins.io/doc/pipeline) then install [Deployment Pipeline](#deployment-pipeline) tools. 
+* If you want to have fun with **Jenkins 2.x Pipeline** [Jenkinsfile](https://jenkins.io/doc/pipeline/jenkinsfile) or [Zero-downtime Deployment (and Rollback) in Tomcat](http://java-monitor.com/forum/showthread.php?t=1288) then you need:
   * to fork this repository to edit your [Jenkinsfile](Jenkinsfile)
   * the Developer tools
-  * the Deployment tools 
+  * the Deployment tools
 
 Please note this plaground was setup in **July 2016**. Please do send me fixes for my stupid errors. 
 
 # Development 
-Once you have the sources downloaded and [developer tools](#developer) setup execute the follow to compile and run on Jetty for local development
+Once you have the sources downloaded and [developer tools](#developer-tools) setup execute the follow to compile and run on Jetty for local development
 
 	mvn clean compile jetty:run
 
@@ -19,28 +19,21 @@ NOTE: For hot reload to work, _Eclipse->Project->Build Automatically_ should be 
 
 The helloworld REST service will be availabe on:
 
-* http://localhost:9998/app/hello>
+*   http://localhost:9998/app/hello
 
-and the default index.jsp will respond on:
+and the default _index.jsp_ will respond on:
 
-* http://localhost:9998
+*   http://localhost:9998
 
-# Intergration Testing
-## Build War for Tomcat hot deployment 
+To do a SonarQube analysis use: 
+
+	mvn clean test sonar:sonar
+
+And to build a distribution package: 
 
 	mvn clean package
 
-## Deployment to Intergration Test - i.e. standalone Tomcat
-### Manual
-
-Copy war into webapps folder of running tomcat instance
-
-## URLS
-
--   <http://localhost:8080/RESTful/app/hello>
--   [Default index page](http://localhost:8080/RESTful/)
-
-## Developer
+## Developer Tools
 
 -   [JDK 8u91](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 -   [Github Desktop](https://desktop.github.com/)
@@ -61,6 +54,13 @@ The following tools are used in my hello world deployment pipeline:
 -   [Nexus, 3.01](http://www.sonatype.com/download-oss-sonatype)
 -   [SonarQube, 5.6.1](http://www.sonarqube.org/downloads/)
 
+I use the following [custom launcher scripts](src/site/resources) for the tools: 
+
+-   F:\Apps\Nexus\NexusRunner.cmd
+-   F:\Apps\SonarQube\sonarqube-5.6.1\bin\windows-x86-64\StartSonar.bat
+-   F:\Apps\Tomcat\TomcatRunner.cmd
+-   F:\Apps\Jenkins\JenkinsRunner.cmd
+
 Applications use their default ports hence are available on:
 
 -   [Tomcat](http://localhost:8080)
@@ -72,18 +72,22 @@ Applications are used **as is** except for Jenkins which needs to be informed of
 
 * JDK
 * Maven
-  ** Use **M3** as maven client name 
+  * Use **M3** as maven client name 
 * Git Client
 
-I use the following [launcher scripts](src/site/resources) 
+You need to configure at least one job in jenkins! I have two. One for [inline pipeline script](src/site/resources/JenkinsHome/jobs/HelloWorldPipeline/config.xml) and one [reading pipeline script from source code control](src/site/resources/JenkinsHome/jobs/HelloWorldJenkinsfile/config.xml)
 
--   F:\Apps\Nexus\NexusRunner.cmd
--   F:\Apps\SonarQube\sonarqube-5.6.1\bin\windows-x86-64\StartSonar.bat
--   F:\Apps\Tomcat\TomcatRunner.cmd
--   F:\Apps\Jenkins\JenkinsRunner.cmd
+Once everything is configured, build and deploy war files to tomcat via your jenkins job(s). The app will be available on:  
 
-# References & Research
+-   <http://localhost:8080/RESTful/app/hello>
+-   [Default index page](http://localhost:8080/RESTful/)
 
+And Jenkins jobs on:
+
+*	http://localhost:9090/job/HelloWorldJenkinsfile/workflow-stage
+*	http://localhost:9090/job/HelloWorldPipeline/workflow-stage
+
+# Bibliography
 ## REST Jersy
 
 -   <https://www.ibm.com/developerworks/library/wa-aj-tomcat>
@@ -105,6 +109,7 @@ I use the following [launcher scripts](src/site/resources)
 
 ## Tomcat 
 
+-	<https://www.javacodegeeks.com/2011/06/zero-downtime-deployment-and-rollback.html>
 -   <http://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Available_Variables>
 
 ## Jenkins
