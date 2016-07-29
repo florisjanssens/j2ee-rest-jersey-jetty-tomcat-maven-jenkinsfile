@@ -8,7 +8,8 @@ Proving ground for J2EE 7 RESTful web services. Jersey will provide grunt for RE
   * the Developer tools
   * the Deployment tools
 
-Please note this plaground was setup in **July 2016**. Please do send me fixes for my stupid errors. 
+* Please this plaground was setup in **July 2016**
+* Please do send me fixes for my stupid errors. 
 
 # Development 
 Once you have the sources downloaded and [developer tools](#developer-tools) setup execute the follow to compile and run on Jetty for local development
@@ -88,31 +89,31 @@ And Jenkins jobs on:
 -   <http://localhost:9090/job/HelloWorldPipeline/workflow-stage>
 
 # Bibliography
-## REST Jersey
+### REST Jersey
 
 -   <https://www.ibm.com/developerworks/library/wa-aj-tomcat>
 -   <http://www.vogella.com/tutorials/REST/article.html>
 -   <https://jersey.java.net/documentation/latest/modules-and-dependencies.html>
 -   <https://jersey.java.net/documentation/latest/deployment.html#deployment.servlet>
 
-## REST Jersey Examples
+### REST Jersey Examples
 
 -   <https://github.com/jersey/jersey/tree/master/examples/servlet3-webapp>
 -   <https://github.com/jersey/jersey/blob/master/examples/java8-webapp>
 
-## REST file upload
+### REST file upload
 
 -   <https://javatutorial.net/java-file-upload-rest-service>
 -   <https://jersey.java.net/documentation/latest/user-guide.html#multipart>
 -   <http://howtodoinjava.com/jersey/jersey-file-upload-example>
 -   <http://www.mkyong.com/webservices/jax-rs/file-upload-example-in-jersey>
 
-## Tomcat 
+### Tomcat 
 
 -	<https://www.javacodegeeks.com/2011/06/zero-downtime-deployment-and-rollback.html>
 -   <http://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Available_Variables>
 
-## Jenkins
+### Jenkins
 
 * https://wiki.jenkins-ci.org/display/JENKINS/Starting+and+Accessing+Jenkins
 
@@ -121,10 +122,10 @@ And Jenkins jobs on:
 -   <https://jenkins.io/doc/pipeline/steps>
 -   [Pipeline Syntax Snippet Generator](http://localhost:9090/pipeline-syntax)
 
-## SonarQube
+### SonarQube
 
 -   <http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Maven>
 
-## Markdown
+### Markdown
 
 * https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf
