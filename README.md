@@ -19,11 +19,11 @@ NOTE: For hot reload to work, _Eclipse->Project->Build Automatically_ should be 
 
 The helloworld REST service will be availabe on:
 
-*   http://localhost:9998/app/hello
+-   <http://localhost:9998/app/hello>
 
 and the default _index.jsp_ will respond on:
 
-*   http://localhost:9998
+-   <http://localhost:9998>
 
 To do a SonarQube analysis use: 
 
