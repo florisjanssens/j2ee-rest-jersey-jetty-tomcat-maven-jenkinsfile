@@ -113,6 +113,7 @@ And Jenkins jobs on:
 
 ### REST file upload
 
+-   <https://philsturgeon.uk/api/2016/01/04/http-rest-api-file-uploads>
 -   <https://javatutorial.net/java-file-upload-rest-service>
 -   <https://jersey.java.net/documentation/latest/user-guide.html#multipart>
 -   <http://howtodoinjava.com/jersey/jersey-file-upload-example>
