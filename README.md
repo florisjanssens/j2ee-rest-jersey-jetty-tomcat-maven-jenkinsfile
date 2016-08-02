@@ -92,6 +92,13 @@ And Jenkins jobs on:
 -   <http://localhost:9090/job/HelloWorldPipeline/workflow-stage>
 
 # Bibliography
+### REST 
+
+-   <http://martinfowler.com/articles/richardsonMaturityModel.html>
+-   <https://spring.io/understanding/HATEOAS>
+-   <http://restcookbook.com/Miscellaneous/rest-and-http>
+-   <http://restcookbook.com/Mediatypes/json>
+
 ### REST Jersey
 
 -   <https://www.ibm.com/developerworks/library/wa-aj-tomcat>
