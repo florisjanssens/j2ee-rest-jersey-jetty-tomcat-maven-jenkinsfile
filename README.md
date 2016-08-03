@@ -91,6 +91,9 @@ And Jenkins jobs on:
 -   <http://localhost:9090/job/HelloWorldJenkinsfile/workflow-stage>
 -   <http://localhost:9090/job/HelloWorldPipeline/workflow-stage>
 
+Jenkins Pipeline Syntax Snippet Generator
+-   <http://localhost:9090/pipeline-syntax>
+
 # Bibliography
 ### REST 
 
@@ -119,6 +122,13 @@ And Jenkins jobs on:
 -   <http://howtodoinjava.com/jersey/jersey-file-upload-example>
 -   <http://www.mkyong.com/webservices/jax-rs/file-upload-example-in-jersey>
 
+### REST Testing
+
+-   <https://jersey.java.net/documentation/latest/test-framework.html>
+-   <http://memorynotfound.com/test-jersey-rest-service-with-junit>
+-   <http://www.logicbig.com/tutorials/java-ee-tutorial/jax-rs>
+-	<http://www.logicbig.com/tutorials/java-ee-tutorial/jax-rs/jax-rs-unit-testing>
+
 ### Tomcat 
 
 -	<https://www.javacodegeeks.com/2011/06/zero-downtime-deployment-and-rollback.html>
@@ -126,12 +136,10 @@ And Jenkins jobs on:
 
 ### Jenkins
 
-* https://wiki.jenkins-ci.org/display/JENKINS/Starting+and+Accessing+Jenkins
-
+-   <https://wiki.jenkins-ci.org/display/JENKINS/Starting+and+Accessing+Jenkins>
 -   <https://jenkins.io/doc/pipeline>
 -   <https://jenkins.io/doc/pipeline/jenkinsfile>
 -   <https://jenkins.io/doc/pipeline/steps>
--   [Pipeline Syntax Snippet Generator](http://localhost:9090/pipeline-syntax)
 
 ### SonarQube
 
