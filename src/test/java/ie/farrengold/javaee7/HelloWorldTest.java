@@ -70,7 +70,7 @@ public class HelloWorldTest extends org.glassfish.jersey.test.JerseyTest {
 	@Test
 	public final void testGetPlain() {
 		String expected = "Hello, World!! - Plain text, use curl to get me";
-		String response = target().path("/hello").request().get(String.class);
+		String response = target().path("/hello").request(MediaType.TEXT_PLAIN).get(String.class);
 		assertEquals(expected, response);
 	}
 
