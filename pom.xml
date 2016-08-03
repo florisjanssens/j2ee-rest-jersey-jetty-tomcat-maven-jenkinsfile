@@ -39,38 +39,22 @@
 			<artifactId>jersey-container-servlet</artifactId>
 			<version>2.23.1</version>
 		</dependency>
-		<!-- 
 		<dependency>
 			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
-			<artifactId>jersey-test-framework-provider-simple</artifactId>
+			<artifactId>jersey-test-framework-provider-external</artifactId>
 			<version>2.23.1</version>
+			<scope>test</scope>
 		</dependency>
-		-->
-		<!-- 
-		<dependency>
-			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
-			<artifactId>jersey-test-framework-provider-jdk-http</artifactId>
-			<version>2.23.1</version>
-		</dependency>
-		 -->
 		<dependency>
 			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
 			<artifactId>jersey-test-framework-provider-jetty</artifactId>
 			<version>2.23.1</version>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- <dependency> <groupId>org.glassfish.jersey.test-framework.providers</groupId> 
-			<artifactId>jersey-test-framework-provider-bundle</artifactId> <version>2.23.1</version> 
-			<scope>test</scope> </dependency> - - > <dependency> <groupId>org.glassfish.jersey.test-framework.providers</groupId> 
-			<artifactId>jersey-test-framework-provider-bundle</artifactId> <version>2.23.1</version> 
-			<scope>test</scope> </dependency> -->
-
 	</dependencies>
+
 	<build>
-		<!-- <finalName>RESTful</finalName> -->
-		<!-- <finalName>${project.artifactId}-${project.version}-${maven.build.timestamp}</finalName> -->
-		<!-- Append unique time stamp to war. This facilites Tomcat hot redeployment -->
+		<!-- Append unique time stamp to war. This facilites Tomcat hot deployment -->
 		<finalName>${project.artifactId}##${maven.build.timestamp}</finalName>
 		<pluginManagement>
 			<plugins>
@@ -95,6 +79,11 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.5.1</version>
 				</plugin>
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-failsafe-plugin</artifactId>
+					<version>2.19.1</version>
+	            </plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -151,6 +140,24 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-failsafe-plugin</artifactId>
+		        <configuration>
+		          <systemPropertyVariables>
+					<jersey.test.host>localhost</jersey.test.host>
+					<jersey.config.test.container.port>8080</jersey.config.test.container.port>
+		          </systemPropertyVariables>
+		        </configuration>
+		        <executions>
+		          <execution>
+		            <goals>
+		              <goal>integration-test</goal>
+		              <goal>verify</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		      </plugin>
 		</plugins>
 	</build>
 	<properties>
@@ -169,4 +176,8 @@
 		<sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
 		<sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
 	</properties>
+	<inceptionYear>2016</inceptionYear>
+	<organization>
+		<name>FarrenGold</name>
+	</organization>
 </project>

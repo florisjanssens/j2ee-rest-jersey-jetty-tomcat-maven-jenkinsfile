@@ -123,11 +123,17 @@ Jenkins Pipeline Syntax Snippet Generator
 -   <http://www.mkyong.com/webservices/jax-rs/file-upload-example-in-jersey>
 
 ### REST Testing
+#### UNIT
 
 -   <https://jersey.java.net/documentation/latest/test-framework.html>
 -   <http://memorynotfound.com/test-jersey-rest-service-with-junit>
 -   <http://www.logicbig.com/tutorials/java-ee-tutorial/jax-rs>
 -	<http://www.logicbig.com/tutorials/java-ee-tutorial/jax-rs/jax-rs-unit-testing>
+
+#### Intergration
+
+-   <https://jersey.java.net/apidocs/2.23.1/jersey/org/glassfish/jersey/test/external/ExternalTestContainerFactory.html>
+-	<http://www.sonarqube.org/measure-coverage-by-integration-tests-with-sonar-updated>
 
 ### Tomcat 
 
