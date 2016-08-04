@@ -16,6 +16,9 @@ node {
 	bat "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package"
 	//step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 	
+	stage 'Demo in Telford'
+	input 'What the heck?'
+
 	   // Mark the code build 'stage'....
 	stage 'Archive'
 	stash includes: 'target/*.war', name: 'RESTful.war'
