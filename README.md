@@ -134,6 +134,7 @@ Jenkins Pipeline Syntax Snippet Generator
 
 -   <https://jersey.java.net/apidocs/2.23.1/jersey/org/glassfish/jersey/test/external/ExternalTestContainerFactory.html>
 -	<http://www.sonarqube.org/measure-coverage-by-integration-tests-with-sonar-updated>
+-   <http://www.eclemma.org/jacoco/trunk/doc/agent.html>
 
 ### Tomcat 
 
@@ -150,6 +151,9 @@ Jenkins Pipeline Syntax Snippet Generator
 ### SonarQube
 
 -   <http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Maven>
+-   <http://docs.sonarqube.org/display/PLUG/Code+Coverage+by+Integration+Tests+for+Java+Project>
+-   <http://www.eclemma.org/jacoco/trunk/doc/prepare-agent-integration-mojo.html>
+-   <https://aroundthecode.org/2014/07/07/unit-and-integration-tests-coverage-with-sonarqube-and-jacoco>
 
 ### Markdown
 

@@ -34,8 +34,6 @@ node {
 	bat "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore sonar:sonar"
 
 	stage 'Release To Production'
-	input 'Free the bird?'
+	input 'Free the bird? Let the birdy fly'
 
-	stage 'Demo in London'
-	input 'What to say about this?'
 }

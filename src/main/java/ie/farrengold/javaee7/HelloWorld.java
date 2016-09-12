@@ -18,21 +18,27 @@ public class HelloWorld {
 	@Context
 	private UriInfo context;
 
-	/** Creates a new instance of HelloWorld */
+	/** Default constructor as required by JAX-RS. */
 	public HelloWorld() {
+		// Default constructor as required by JAX-RS
 	}
 
 	/**
 	 * Retrieves representation of an instance of helloWorld.HelloWorld
 	 * 
-	 * @return an instance of java.lang.String
+	 * @return HTML
 	 */
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String getHtml() {
-		return "<html lang=\"en\"><body><h1>Hello, World!!</h1></body></html>";
+		return "<html lang=\"en\"><body><h1>Hello, World!! How are you</h1></body></html>";
 	}
 
+	/**
+	 * Get alternate content from same end point.
+	 * 
+	 * @return Plain text
+	 */
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getPlain() {

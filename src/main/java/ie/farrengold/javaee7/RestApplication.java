@@ -16,7 +16,7 @@ public class RestApplication extends Application {
 
 	@Override
 	public Map<String, Object> getProperties() {
-		Map<String, Object> properties = new HashMap<String, Object>();
+		Map<String, Object> properties = new HashMap<>();
 		properties.put("jersey.config.server.provider.packages", "ie.farrengold.javaee7");
 		return properties;
 	}

@@ -51,6 +51,13 @@
 			<version>2.23.1</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Trigger a download so can refere to in Tomcat Startup -->
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>org.jacoco.agent</artifactId>
+			<version>0.7.7.201606060606</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -79,23 +86,17 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.5.1</version>
 				</plugin>
-	            <plugin>
-	                <groupId>org.apache.maven.plugins</groupId>
-	                <artifactId>maven-failsafe-plugin</artifactId>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>2.19.1</version>
-	            </plugin>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
+				<configuration> <source>1.8</source> <target>1.8</target> </configuration> 
+				</plugin> -->
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
@@ -141,38 +142,38 @@
 				</executions>
 			</plugin>
 			<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-failsafe-plugin</artifactId>
-		        <configuration>
-		          <systemPropertyVariables>
-					<jersey.test.host>localhost</jersey.test.host>
-					<jersey.config.test.container.port>8080</jersey.config.test.container.port>
-		          </systemPropertyVariables>
-		        </configuration>
-		        <executions>
-		          <execution>
-		            <goals>
-		              <goal>integration-test</goal>
-		              <goal>verify</goal>
-		            </goals>
-		          </execution>
-		        </executions>
-		      </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<systemPropertyVariables>
+						<jersey.test.host>localhost</jersey.test.host>
+						<jersey.config.test.container.port>8080</jersey.config.test.container.port>
+					</systemPropertyVariables>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<properties>
 		<jersey.config.test.container.port>9998</jersey.config.test.container.port>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<!-- 
-		<project.build.source>1.8</project.build.source> 
-		<project.build.target>1.8</project.build.target> 
-		-->
+		<!-- <project.build.source>1.8</project.build.source> <project.build.target>1.8</project.build.target> -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.debuglevel>lines,vars,source</maven.compiler.debuglevel>
 		<maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
 
 		<sonar.language>java</sonar.language>
 		<sonar.java.source>8</sonar.java.source>
+		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
 		<sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
 		<sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
 	</properties>
