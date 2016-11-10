@@ -5,8 +5,29 @@
 	<artifactId>RESTful</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>RESTful Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<name>Hello REST World</name>
+	<properties>
+		<jersey.config.test.container.port>9998</jersey.config.test.container.port>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.source>1.8</project.build.source>
+		<project.build.target>1.8</project.build.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.debuglevel>lines,vars,source</maven.compiler.debuglevel>
+		<maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
+
+		<sonar.language>java</sonar.language>
+		<sonar.java.source>8</sonar.java.source>
+		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+		<sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
+		<sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
+		<jersey.version>2.24</jersey.version>
+		<log4j.version>2.7</log4j.version>
+		<jackson.version>2.8.4</jackson.version>
+	</properties>
+	<url>http://www.rte.ie</url>
+	<inceptionYear>2016</inceptionYear>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -37,18 +58,18 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet</artifactId>
-			<version>2.23.1</version>
+			<version>${jersey.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
 			<artifactId>jersey-test-framework-provider-external</artifactId>
-			<version>2.23.1</version>
+			<version>${jersey.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
 			<artifactId>jersey-test-framework-provider-jetty</artifactId>
-			<version>2.23.1</version>
+			<version>${jersey.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- Trigger a download so can refere to in Tomcat Startup -->
@@ -91,12 +112,32 @@
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>2.19.1</version>
 				</plugin>
+				<!-- REST API documentation -->
+				<plugin>
+					<groupId>com.sebastian-daschner</groupId>
+					<artifactId>jaxrs-analyzer-maven-plugin</artifactId>
+					<version>0.9</version>
+				</plugin>
+				<plugin>
+					<groupId>org.raml.plugins</groupId>
+					<artifactId>jaxrs-raml-maven-plugin</artifactId>
+					<version>1.3.4</version>
+				</plugin>
+				<!-- REST API testing -->
+				<!-- REST assured -->
+				<!-- https://mvnrepository.com/artifact/com.jayway.restassured/rest-assured -->
 			</plugins>
 		</pluginManagement>
+
 		<plugins>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
-				<configuration> <source>1.8</source> <target>1.8</target> </configuration> 
-				</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
@@ -141,6 +182,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!--  FIXME Disable for a while
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -159,26 +201,79 @@
 					</execution>
 				</executions>
 			</plugin>
+			-->
+			<plugin>
+				<!-- Available backends are plaintext (default), swagger and asciidoc -->
+				<!-- Requires Java 1.8 -->
+				<groupId>com.sebastian-daschner</groupId>
+				<artifactId>jaxrs-analyzer-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>rest.api.doc.jaxrs-analyzer-maven-plugin</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>analyze-jaxrs</goal>
+						</goals>
+						<configuration>
+							<backend>plaintext</backend>
+							<deployedDomain>http://localhost/${project.artifactId}</deployedDomain>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<!-- TODO: Move to seperate profile. Will not work behind firewall -->
+				<!-- https://github.com/mulesoft/raml-for-jax-rs/issues/89 -->
+				<!-- https://github.com/mulesoft/raml-for-jax-rs/issues/84 -->
+				<groupId>org.raml.plugins</groupId>
+				<artifactId>jaxrs-raml-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>rest.api.doc.jaxrs-raml-maven-plugin</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>generate-raml</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<!-- http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Maven -->
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>code.quality.unit.test.sonar-maven-plugin</id>
+						<phase>test</phase>
+						<goals>
+							<goal>sonar</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>code.quality.integration.test.sonar-maven-plugin</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>sonar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-	<properties>
-		<jersey.config.test.container.port>9998</jersey.config.test.container.port>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<!-- <project.build.source>1.8</project.build.source> <project.build.target>1.8</project.build.target> -->
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<maven.compiler.debuglevel>lines,vars,source</maven.compiler.debuglevel>
-		<maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
-
-		<sonar.language>java</sonar.language>
-		<sonar.java.source>8</sonar.java.source>
-		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
-		<sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
-		<sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
-	</properties>
-	<inceptionYear>2016</inceptionYear>
+	<description>Hello world. Is it time to move to Chicago? Cubs won World series. Ireland can beat New Zealand in rugb there</description>
 	<organization>
 		<name>FarrenGold</name>
+		<url>https://ie.linkedin.com/in/lastnitescurry</url>
 	</organization>
+	<developers>
+		<developer>
+			<id>lastnitescurry</id>
+			<name>Brian Dinneen</name>
+			<roles>
+				<role>Development</role>
+				<role>CI/CD</role>
+			</roles>
+			<timezone>Europe/London</timezone>
+		</developer>
+	</developers>
 </project>
