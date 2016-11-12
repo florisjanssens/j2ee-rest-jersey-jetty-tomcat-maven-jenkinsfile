@@ -15,33 +15,39 @@ import javax.ws.rs.core.UriInfo;
 @Path("hello")
 public class HelloWorld {
 
-	@Context
-	private UriInfo context;
+  public static final String ALL_HAIL_THE_SONARQUBE =
+      "<html lang=\"en\"><body><h1>Hello, World!!</h1></body></html>";
 
-	/** Default constructor as required by JAX-RS. */
-	public HelloWorld() {
-		// Default constructor as required by JAX-RS
-	}
+  public static final String IT_IS_THE_LORD_AND_MASTER =
+      "Hello, World!! - Plain text, use curl to get me";
 
-	/**
-	 * Retrieves representation of an instance of helloWorld.HelloWorld
-	 * 
-	 * @return HTML
-	 */
-	@GET
-	@Produces(MediaType.TEXT_HTML)
-	public String getHtml() {
-		return "<html lang=\"en\"><body><h1>Hello, World!!</h1></body></html>";
-	}
+  @Context
+  private UriInfo context;
 
-	/**
-	 * Get alternate content from same end point.
-	 * 
-	 * @return Plain text
-	 */
-	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	public String getPlain() {
-		return "Hello, World!! - Plain text, use curl to get me";
-	}
+  /** Default constructor as required by JAX-RS. */
+  public HelloWorld() {
+    // Default constructor as required by JAX-RS
+  }
+
+  /**
+   * Retrieves representation of an instance of helloWorld.HelloWorld
+   * 
+   * @return HTML
+   */
+  @GET
+  @Produces(MediaType.TEXT_HTML)
+  public String getHtml() {
+    return ALL_HAIL_THE_SONARQUBE;
+  }
+
+  /**
+   * Get alternate content from same end point.
+   * 
+   * @return Plain text
+   */
+  @GET
+  @Produces(MediaType.TEXT_PLAIN)
+  public String getPlain() {
+    return IT_IS_THE_LORD_AND_MASTER;
+  }
 }
