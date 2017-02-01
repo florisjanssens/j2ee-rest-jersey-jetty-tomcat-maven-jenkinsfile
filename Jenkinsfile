@@ -30,8 +30,8 @@ node {
 	unstash 'RESTful.war'
 	sh 'cp target\\*.war F:\\Apps\\Tomcat\\apache-tomcat-8.5.4\\webapps'
    
-	stage 'SonarQube Analysis'
-	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore sonar:sonar"
+	//stage 'SonarQube Analysis'
+	//sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore sonar:sonar"
 
 	stage 'Release To Production'
 	input 'Free the bird? Let the birdy fly'
