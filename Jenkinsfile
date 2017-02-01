@@ -14,7 +14,7 @@ node {
 	// Mark the code build 'stage'....
 	stage 'Unit Tests'
 	// Run the maven build
-	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean test"
+	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean test findbugs:findbugs"
 	
 	// Integration Tests
 	// Mark the code build 'stage'....
