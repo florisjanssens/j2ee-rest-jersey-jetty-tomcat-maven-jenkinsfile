@@ -14,9 +14,10 @@ node {
 	// Mark the code build 'stage'....
 	stage 'Unit Tests'
 	// Run the maven build
-	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean test findbugs:findbugs"
+	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean test findbugs:findbugs checkstyle:checkstyle"
 	step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 	step([$class: 'FindBugsPublisher', pattern: '**/findbugsXml.xml'])
+	step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: '**/target/checkstyle-result.xml'])
 	
 	// Integration Tests
 	// Mark the code build 'stage'....
