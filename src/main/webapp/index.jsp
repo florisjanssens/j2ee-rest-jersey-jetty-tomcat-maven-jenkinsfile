@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Hello World! JSP</h2>
+<h2>Time flies like an arrow; fruit flies like a banana</h2>
 </body>
 </html>
