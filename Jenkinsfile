@@ -3,7 +3,7 @@ node {
 	stage 'Checkout'
 	
 	// Get some code from a GitHub repository
-	git 'https://github.com/lastnitescurry/j2ee-rest-jersey-jetty-tomcat-maven-jenkinsfile.git'
+	git 'https://github.com/florisjanssens/j2ee-rest-jersey-jetty-tomcat-maven-jenkinsfile.git'
 	
 	// Get the maven tool.
 	// ** NOTE: This 'M3' maven tool must be configured
