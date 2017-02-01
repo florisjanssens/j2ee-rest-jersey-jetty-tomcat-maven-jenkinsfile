@@ -17,11 +17,6 @@
 		<maven.compiler.debuglevel>lines,vars,source</maven.compiler.debuglevel>
 		<maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
 
-		<sonar.language>java</sonar.language>
-		<sonar.java.source>8</sonar.java.source>
-		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
-		<sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
-		<sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
 		<jersey.version>2.24</jersey.version>
 		<log4j.version>2.7</log4j.version>
 		<jackson.version>2.8.4</jackson.version>
@@ -158,12 +153,6 @@
 					<groupId>org.eclipse.jetty</groupId>
 					<artifactId>jetty-maven-plugin</artifactId>
 					<version>9.4.0.RC1</version>
-				</plugin>
-				<plugin>
-					<!-- Code Quality Management -->
-					<groupId>org.sonarsource.scanner.maven</groupId>
-					<artifactId>sonar-maven-plugin</artifactId>
-					<version>3.2</version>
 				</plugin>
 				<plugin>
 					<!-- Code Quality Management - UNIT and Intergration test combined coverage -->
@@ -414,27 +403,6 @@
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>generate-raml</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<!-- http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Maven -->
-				<groupId>org.sonarsource.scanner.maven</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>code.quality.unit.test.sonar-maven-plugin</id>
-						<phase>test</phase>
-						<goals>
-							<goal>sonar</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>code.quality.integration.test.sonar-maven-plugin</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>sonar</goal>
 						</goals>
 					</execution>
 				</executions>
