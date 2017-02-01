@@ -15,6 +15,7 @@ node {
 	stage 'Unit Tests'
 	// Run the maven build
 	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean test findbugs:findbugs"
+	step([$class: 'FindBugsPublisher', pattern: '**/findbugsXml.xml'])
 	
 	// Integration Tests
 	// Mark the code build 'stage'....
