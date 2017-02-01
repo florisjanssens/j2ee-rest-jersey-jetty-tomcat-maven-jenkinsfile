@@ -28,7 +28,8 @@ node {
 	
 	stage 'Deploy To Manual Test'
 	unstash 'RESTful.war'
-	sh 'cp target/*.war /opt/tomcat/webapps'
+	sh 'cp target/*.war restful.war'
+	sh 'cp restful.war /opt/tomcat/webapps'
    
 	//stage 'SonarQube Analysis'
 	//sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore sonar:sonar"
