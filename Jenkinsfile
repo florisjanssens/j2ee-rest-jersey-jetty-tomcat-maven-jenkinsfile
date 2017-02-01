@@ -17,7 +17,6 @@ node {
 	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean test findbugs:findbugs"
 	step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 	step([$class: 'FindBugsPublisher', pattern: '**/findbugsXml.xml'])
-	step([$class: 'AnalysisPublisher'])
 	
 	// Integration Tests
 	// Mark the code build 'stage'....
