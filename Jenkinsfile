@@ -16,25 +16,17 @@ node {
 	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package"
 	//step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 	
-	stage 'Demo in Telford'
-	input 'What the heck?'
-
-	   // Mark the code build 'stage'....
-	stage 'Archive'
-	stash includes: 'target/*.war', name: 'RESTful.war'
+	// Integration Tests
+	// Mark the code build 'stage'....
+	stage 'Integration Test'
+	// Run the maven build
+	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean integration-test"
 	
 	stage 'Release To Manual Test'
 	input 'Deploy to local Tomcat?'
 	
 	stage 'Deploy To Manual Test'
-	unstash 'RESTful.war'
+	sh 'rm /opt/tomcat/webapps/restful.war'
 	sh 'cp target/*.war restful.war'
 	sh 'cp restful.war /opt/tomcat/webapps'
-   
-	//stage 'SonarQube Analysis'
-	//sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore sonar:sonar"
-
-	stage 'Release To Production'
-	input 'Free the bird? Let the birdy fly'
-
 }
