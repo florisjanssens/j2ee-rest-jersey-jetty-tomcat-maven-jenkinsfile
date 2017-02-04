@@ -10,22 +10,23 @@ node {
 	// **       in the global configuration.           
 	def mvnHome = tool 'M3'
 	
-	// Unit Tests
-	// Mark the code build 'stage'....
-	stage 'Unit Tests'
-	// Run the maven build
-	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean test findbugs:findbugs checkstyle:checkstyle"
-	step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+	// Static Analysis
+	stage 'Static Analysis'
 	step([$class: 'FindBugsPublisher', pattern: '**/findbugsXml.xml'])
 	step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: '**/target/checkstyle-result.xml'])
 	
+	// Unit Tests
+	stage 'Unit Tests'
+	// Run the maven build
+	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean test"
+	step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+	
 	// Integration Tests
-	// Mark the code build 'stage'....
 	stage 'Integration Tests'
 	// Run the maven build
 	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean integration-test"
 	
-	// Mark the code build 'stage'....
+	// Package
 	stage 'Package'
 	// Run the maven build
 	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package"
