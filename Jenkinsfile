@@ -10,14 +10,14 @@ node {
 	def mvnHome = tool 'M3'
 	
 	stage ('Static Analysis') {
-		sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean findbugs:findbugs checkstyle:checkstyle"
-		step([$class: 'FindBugsPublisher', pattern: '**/target/findbugsXml.xml'])
+		sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean checkstyle:checkstyle"
 		step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: '**/target/checkstyle-result.xml'])
 	}
 	
 	stage ('Unit Tests') {
 		// Run the maven build
-		sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean test"
+		sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean test findbugs:findbugs"
+		step([$class: 'FindBugsPublisher', pattern: '**/target/findbugsXml.xml'])
 		step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 	}
 	
