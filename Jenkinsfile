@@ -11,7 +11,7 @@ node {
 	
 	stage ('Static Analysis') {
 		sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean findbugs:findbugs checkstyle:checkstyle"
-		step([$class: 'FindBugsPublisher', pattern: '**/findbugsXml.xml'])
+		step([$class: 'FindBugsPublisher', pattern: '**/target/findbugsXml.xml'])
 		step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: '**/target/checkstyle-result.xml'])
 	}
 	
